@@ -1,0 +1,160 @@
+,X.1,X,subjid,condition,order,age,sex,handedness,vision,major,number_exp_mpi,number_exp_external,gamble_studies,number_gamble_studies
+2,1,1,110,1,A,28,f,rechts,Ja,Steuerfachangestellte,5,0,ja,3
+4,2,2,111,1,A,19,f,rechts,Ja,Psychologie,4,15,ja,3
+6,3,3,112,1,B,27,f,rechts,Ja (korrigiert),Theater- Film- und Medienwissenschaften,2,0,ja,2
+8,4,4,113,1,B,31,f,rechts,Ja (korrigiert),Geschichte,2,10,ja,2
+10,5,5,114,1,A,21,m,rechts,Ja,suchend,1,0,ja,1
+12,6,6,115,1,A,26,f,rechts,Ja,Jura,0,1,nein,0
+14,7,7,116,1,B,26,f,rechts,Ja,Angewandte Literaturwissenschaft,10,0,ja,3
+16,8,8,117,1,B,27,f,links,Ja,Jura,10,40,ja,15
+18,9,9,118,1,A,39,m,rechts,Ja,Nachhilfelehrer,3,30,ja,2
+20,10,10,119,1,A,25,f,rechts,Ja,MA Osteuropastudien,3,NA,ja,5
+22,11,11,120,1,B,21,m,rechts,Ja,iNDUSTRIEMECHANIKER,0,0,nein,0
+24,12,12,121,1,B,22,m,rechts,Ja,studium umweltinformatik,20,60,ja,10
+26,13,13,122,1,A,37,f,rechts,Ja,erzieher,0,0,nein,0
+28,14,14,123,1,A,22,f,rechts,Ja (korrigiert),Kommunikation,2,2,ja,2
+30,15,15,124,1,B,27,m,rechts,Ja,Fahrdienstleiter,6,10,ja,1
+32,16,16,126,1,A,28,m,rechts,Ja,Lebensmitteltechnologie/Koch,8,0,ja,2
+34,17,17,127,1,A,26,f,rechts,Ja,Jura,0,15,ja,5
+36,18,18,128,1,B,26,f,rechts,Ja,Studentin,5,0,ja,4
+38,19,19,130,1,A,21,m,rechts,Ja,Informatik,6,0,ja,4
+40,20,20,132,1,B,31,f,rechts,Ja (korrigiert),Kunstgeschichte,5,20,ja,3
+42,21,21,133,1,B,21,m,rechts,Ja,Geowissenschaften,5,20,ja,8
+44,22,22,134,1,A,29,f,rechts,Ja (korrigiert),IT-Assistenz,6,25,nein,0
+46,23,23,135,1,A,32,f,rechts,Ja,Erzieherin,2,20,nein,0
+48,24,24,136,1,B,27,f,rechts,Ja,Lehrerin,6,0,ja,3
+50,25,25,137,1,B,26,m,rechts,Ja,Franzoesisch/Englisch,0,0,nein,0
+52,26,26,138,1,A,29,f,rechts,Ja (korrigiert),Kundenservice,2,0,ja,1
+54,27,27,139,1,A,35,m,rechts,Ja,Ewi,50,8,ja,30
+56,28,28,140,1,B,28,f,rechts,Ja (korrigiert),Rechtswissenschaft,6,0,ja,1
+58,29,29,141,1,B,20,f,rechts,Ja,Physiotherapie (Bc.S.),3,0,nein,0
+60,30,30,142,1,A,21,f,rechts,Ja,VWL,NA,NA,ja,NA
+62,31,31,143,1,A,27,m,rechts,Ja (korrigiert),Wirtschaftskommunikation,10,NA,ja,2
+64,32,32,144,1,B,28,m,links,Ja,Jura,10,0,ja,4
+66,33,33,145,1,B,21,m,rechts,Ja,Biologie (Studium),2,0,ja,2
+68,34,34,146,1,A,27,m,rechts,Ja,Psychologie,1,10,ja,1
+70,35,35,147,1,A,24,f,rechts,Ja (korrigiert),Projektmanagerin,50,0,ja,5
+72,36,36,148,1,B,28,f,rechts,Ja (korrigiert),Arzt,3,5,nein,0
+74,37,37,150,1,A,26,f,rechts,Ja,Journalist,6,8,ja,2
+76,38,38,151,1,A,32,f,rechts,Ja (korrigiert),Gesundheits und Krankenpflegerin,0,3,ja,3
+78,39,39,153,1,B,22,m,rechts,Ja,Master Maschinenbau,1,1,nein,0
+80,40,40,155,1,A,31,f,rechts,Ja,Sprachwissenschaft,0,30,ja,20
+82,41,41,156,1,B,24,f,rechts,Ja (korrigiert),Psychologie,5,0,ja,2
+84,42,42,157,1,B,18,m,rechts,Ja,nebenjob,5,0,ja,3
+86,43,43,158,1,A,35,f,rechts,Ja,Flugbegleiterin,0,0,nein,0
+88,44,44,159,1,A,31,f,rechts,Ja,Chemikerin,6,0,ja,4
+90,45,45,160,1,B,24,m,rechts,Ja,Medienkauffrau Digital und Print,20,0,ja,5
+92,46,46,161,1,B,24,f,rechts,Ja,Psychologie,0,10,nein,10
+94,47,47,162,1,A,26,m,rechts,Ja,Elektrotechnik,1,3,ja,2
+96,49,49,164,1,B,30,f,rechts,Ja,Personalentwicklung,5,3,ja,3
+98,50,50,165,1,B,27,f,rechts,Ja (korrigiert),Politik,0,1,nein,0
+100,51,51,166,1,A,20,m,rechts,Ja,Lehramt Chemie und Biologie Gymnasium,0,1,ja,0
+102,52,52,167,1,A,22,f,rechts,Ja (korrigiert),NA,0,0,nein,0
+104,53,53,168,1,B,21,f,rechts,Ja (korrigiert),Agrarwissenschaften,0,0,ja,0
+106,54,54,170,1,A,23,m,rechts,Ja,Philosophie,20,0,ja,3
+108,55,55,210,2,A,27,m,rechts,Ja,Geschichtswissenschaft,5,1,ja,3
+110,56,56,211,1,A,18,f,rechts,Ja,Biowissenchaften,1,0,nein,0
+112,57,57,212,2,B,25,f,rechts,Ja,Student,10,0,ja,8
+114,58,58,213,2,B,28,f,rechts,Ja,Psychologie,3,0,ja,3
+116,59,59,214,2,A,24,m,rechts,Ja,Politik/Mathe,10,15,ja,10
+118,60,60,215,2,A,24,f,rechts,Ja,Soziale Arbeit,20,30,ja,2
+120,61,61,216,2,B,24,f,rechts,Ja (korrigiert),Biologie,5,2,ja,1
+122,62,62,217,2,B,24,m,rechts,Ja,Student Gartenbau,5,1,nein,0
+124,63,63,218,2,A,39,f,rechts,Ja,Umschulung,2,0,ja,1
+126,64,64,219,2,A,20,m,links,Ja,Geotechnologie,7,0,ja,4
+128,65,65,220,2,B,24,m,rechts,Ja,bwl,5,0,ja,5
+130,66,66,221,2,B,21,f,rechts,Ja,Geographie,5,0,ja,5
+132,67,67,222,2,A,25,m,rechts,Ja,Philosophie,4,8,ja,3
+134,69,69,224,2,B,36,f,rechts,Ja (korrigiert),Steuerrecht,8,20,ja,4
+136,70,70,225,2,B,20,f,rechts,Ja,Japanologie,1,0,nein,NA
+138,71,71,226,2,A,25,m,rechts,Ja,Psychologie,30,2,ja,5
+140,72,72,228,2,B,32,f,rechts,Ja,sozialarbeiterin,10,0,ja,2
+142,73,73,229,2,B,26,f,rechts,Ja,Umweltplanung,1,1,ja,1
+144,74,74,231,2,A,29,m,rechts,Ja,Politikwissenschaft Master,8,1,ja,3
+146,75,75,232,2,B,23,m,rechts,Ja,NA,1,0,nein,0
+148,76,76,233,2,B,24,m,rechts,Ja,Public Health,6,0,ja,3
+150,77,77,235,2,A,31,m,rechts,Ja,Heilerziehungspfleger,3,0,nein,0
+152,79,79,238,2,A,33,f,links,Ja (korrigiert),geh. Polizeivollzugsdienst,6,12,ja,3
+154,80,80,239,2,A,28,m,rechts,Ja,Student,8,8,ja,3
+156,81,81,240,2,B,26,m,rechts,Ja,Sozialwissenschaftler,1,5,nein,0
+158,82,82,241,2,B,19,m,rechts,Nein (siehe Protokoll),Informatik,1,0,ja,1
+160,83,83,242,2,A,27,m,rechts,Ja,Maschinenbau,5,0,nein,0
+162,84,84,243,2,A,19,f,rechts,Ja,Sozialwissenschaften,6,0,ja,1
+164,85,85,245,2,B,18,m,rechts,Ja (korrigiert),Geotechnologie,6,0,ja,4
+166,86,86,246,2,A,26,m,rechts,Ja,Theaterwissenschaft,1,0,nein,0
+168,87,87,247,2,A,31,m,rechts,Ja,Kultur u. Geschichte Mittel- u. Osteuropas,20,4,ja,15
+170,88,88,248,2,B,27,f,rechts,Ja,Jura,1,0,nein,0
+172,89,89,249,2,B,20,m,rechts,Ja,Wirtschaftspsychologie,5,1,ja,2
+174,90,90,250,2,A,32,f,links,Ja,PFLEGEKRAFT,1,0,ja,1
+176,91,91,251,2,A,22,m,rechts,Ja,VWL,3,0,ja,1
+178,92,92,252,2,B,29,f,rechts,Nein (siehe Protokoll),Flugbegleiterin,5,2,ja,3
+180,93,93,253,2,B,21,f,rechts,Ja,Psychologie ,2,15,ja,2
+182,94,94,254,2,A,28,f,links,Ja,Bildungs- und Erziehungwisseschaftem,1,1,nein,0
+184,95,95,255,2,A,26,f,rechts,Ja (korrigiert),VWL,8,0,ja,2
+186,96,96,256,2,B,26,f,rechts,Ja (korrigiert),AVLMaster,1,4,nein,0
+188,97,97,257,2,B,18,m,rechts,Ja,Verkehrswesen,2,0,ja,2
+190,98,98,258,2,A,24,f,rechts,Ja (korrigiert),Geschichte,2,0,nein,NA
+192,99,99,259,2,A,29,f,rechts,Ja (korrigiert),Arzt,8,10,ja,2
+194,100,100,260,2,B,18,f,rechts,Ja,Psychologie,NA,NA,ja,NA
+196,101,101,261,2,B,25,m,links,Nein (siehe Protokoll),Student,4,NA,ja,1
+198,102,102,262,2,A,23,m,rechts,Nein (siehe Protokoll),Geschichte/Religionswissenschaften,3,NA,nein,NA
+200,103,103,263,2,A,24,f,rechts,Ja,Psychologie,3,15,ja,2
+202,104,104,264,2,B,19,m,rechts,Ja,Biologie,1,2,nein,1
+204,105,105,266,2,A,26,f,rechts,Ja,M.Sc. Psychologie,NA,NA,ja,NA
+206,106,106,267,2,A,26,f,rechts,Ja (korrigiert),Gesundheitswissenschaften,1,0,nein,0
+208,107,107,268,2,B,36,m,rechts,Ja,Beruf,20,NA,ja,3
+210,108,108,269,2,B,21,m,rechts,Ja,Rechtswissenschaft,0,0,nein,NA
+212,109,109,270,2,A,31,f,rechts,Ja,Krankenschwester,7,NA,ja,5
+214,110,110,311,3,A,30,f,rechts,Ja (korrigiert),Bio,8,0,ja,3
+216,111,111,312,3,B,21,m,rechts,Ja,Verkehrswesen,1,1,ja,1
+218,112,112,313,3,B,27,f,rechts,Ja (korrigiert),Studium : Lebensmitteltechnologie,1,-,ja,0
+220,113,113,314,3,A,30,f,rechts,Ja (korrigiert),Stadtplanerin,0,3,nein,0
+222,114,114,315,3,A,23,f,rechts,Ja,Geschichte/Erziehungswissenschaften,7,10,ja,10
+224,115,115,316,3,B,28,m,rechts,Ja (korrigiert),Architektur,5,5,ja,3
+226,116,116,317,3,B,25,f,rechts,Ja (korrigiert),Mathematik,0,0,ja,0
+228,117,117,319,3,A,38,m,rechts,Ja,Hotelfachmann,3,1,nein,0
+230,118,118,320,3,B,23,f,rechts,Ja,Sozialversicherungsrecht,0,0,nein,0
+232,119,119,322,3,A,24,f,rechts,Ja (korrigiert),Philosophie,10,10,ja,6
+234,120,120,323,3,A,32,m,links,Ja,Chemie Promotion,10,1,ja,4
+236,121,121,324,3,B,22,f,rechts,Ja,Sportlehrerin,7,0,ja,4
+238,122,122,325,3,B,22,m,rechts,Ja (korrigiert),Bauingenieurswesen,2,1,ja,1
+240,123,123,326,3,A,34,m,rechts,Ja,Azubi Gesundheits- und Krankenpfleger,6,0,ja,4
+242,124,124,327,3,A,23,f,rechts,Ja,Bachelor of Nursing,15,0,ja,12
+244,125,125,328,3,B,20,m,rechts,Ja,Jura,8,1,ja,5
+246,126,126,329,3,B,27,m,rechts,Ja,Logistiker,35,5,ja,7
+248,127,127,330,3,A,24,m,rechts,Ja,<einzelhandelskaufmann,2,0,ja,1
+250,128,128,331,3,A,28,f,rechts,Ja (korrigiert),Publizistik,5,5,ja,2
+252,129,129,333,3,B,28,f,rechts,Ja,Biologie und Chemie Lehramt,2,4,nein,0
+254,130,130,334,3,A,38,f,rechts,Ja,Grundschullehramt,4,0,nein,0
+256,131,131,335,3,A,21,m,rechts,Ja (korrigiert),Sportwissenschaften,8,5,ja,7
+258,132,132,336,3,B,23,f,rechts,Ja,Psychologie,5,15,ja,3
+260,133,133,337,3,B,19,f,rechts,Ja (korrigiert),FSJ,0,0,nein,0
+262,134,134,339,3,A,23,f,rechts,Ja,Zahnmedizin,4,0,ja,2
+264,135,135,340,3,B,20,m,rechts,Ja,Biologie Studium,0,0,nein,0
+266,136,136,341,3,B,27,f,rechts,Ja (korrigiert),mensch,6,0,ja,2
+268,137,137,342,3,A,27,f,rechts,Nein (siehe Protokoll),Kulturwissenschaft/ Spanische Philologie,7,NA,ja,3
+270,138,138,343,3,A,33,m,rechts,Ja,Chefflugbegleiter,1,0,ja,1
+272,139,139,344,3,B,19,f,rechts,Ja,CBTA,2,NA,ja,2
+274,140,140,345,3,B,21,m,rechts,Ja,Psychologie,10,3,ja,6
+276,141,141,350,3,A,20,f,rechts,Ja,physiotherapie,1,1,nein,0
+278,142,142,351,3,A,26,f,rechts,Nein (siehe Protokoll),Geographie,2,2,ja,1
+280,143,143,352,3,B,30,m,rechts,Ja,Journalist,20,10,ja,20
+282,144,144,353,3,B,23,f,rechts,Nein (siehe Protokoll),Rechtswissenschaften,3,0,nein,0
+284,145,145,354,3,A,28,f,rechts,Ja,Geographie,2,0,nein,0
+286,146,146,355,3,A,34,m,rechts,Ja,koch,5,0,ja,2
+288,147,147,356,3,B,25,m,rechts,Ja,TheaterwissenschaftPhilosophie,0,3,nein,0
+290,148,148,358,3,A,26,f,rechts,Ja,Technischer Umweltschutz,6,12,ja,5
+292,149,149,359,3,A,24,f,rechts,Ja,Politik/Sport,10,0,ja,5
+294,150,150,360,3,B,27,m,rechts,Ja,Geograph,7,0,ja,5
+296,151,151,361,3,B,20,f,rechts,Ja,Psychologie studentin,0,0,nein,0
+298,152,152,362,3,A,25,f,rechts,Ja (korrigiert),Wissenschaftsgeschichte,0,3,nein,0
+300,153,153,363,3,A,24,f,rechts,Ja,Biologie und Geschichte auf Lehramt,5,0,ja,4
+302,154,154,364,3,B,24,f,rechts,Ja (korrigiert),Soziale Arbeit,4,3,ja,3
+304,155,155,365,3,B,27,f,rechts,Ja,Designer,1,0,ja,1
+306,156,156,367,3,A,37,m,rechts,Ja,Rettungsassistent,30,10,ja,5
+308,157,157,368,3,B,28,f,links,Ja,NA,12,1,ja,6
+310,158,158,370,3,A,21,m,links,Ja (korrigiert),Jura,5,15,nein,1
+312,159,159,347,3,A,21,m,rechts,Nein (siehe Protokoll),Psychologie,5,5,ja,3
+314,160,160,348,3,B,20,f,rechts,Ja (korrigiert),Studium Physiotherapie,0,0,nein,0
+316,161,161,349,3,B,25,m,rechts,Ja,NA,4,20,ja,10
+318,162,162,369,3,B,22,f,rechts,Ja,Kommunikationswissenschaft und Politikwissenschaft,1,2,nein,0
