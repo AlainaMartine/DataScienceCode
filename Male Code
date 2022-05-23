@@ -1,0 +1,166 @@
+rm(list=ls()) #cleans workspace
+
+#extrafont::fonttable()
+#extrafont::font_import("C:/Windows/Fonts/", pattern = "RobotoCondensed")
+library(ggplot2)
+library(gridExtra)
+library(lme4)
+library(shinystan)
+library(rstanarm)
+library(dplyr)
+library(gridExtra)
+library(cowplot)
+
+##########################################################################################
+##########     WORKING DIRECTORY; LOAD AND PREP DATA
+##########################################################################################
+
+#this will set the working directory to where the analysis script is
+workingdir=dirname(rstudioapi::getActiveDocumentContext()$path) 
+
+choices=read.csv("2 Male.csv")
+choices_et_all=read.csv("3 Male.csv")
+
+setwd(workingdir)
+options(mc.cores=parallel::detectCores())
+
+#choices (for exclusion criteria)
+subnum=unique(choices$subjid)
+dominated=choices[choices$gambleType=="dominated" & choices$timepressure==0,]
+dominated$chose_dominated=0
+dominated$chose_dominated[(dominated$rewA > dominated$rewB) & dominated$choice=="B"]=1
+dominated$chose_dominated[(dominated$rewA < dominated$rewB) & dominated$choice=="A"]=1
+aggdata=aggregate(dominated$chose_dominated, by=list(dominated$subjid), FUN=sum, na.rm=TRUE)
+colnames(aggdata)=c("subjid","sum_dominated_choices")
+subjs=c(aggdata$subjid[aggdata$sum_dominated_choices>3])
+
+# subjs are those with dominated option choices; the other three have bad eyetracking data
+exclusions=c(subjs,223,236,338)
+
+choices=choices[!choices$subjid %in% exclusions, ]
+choices_et_all=choices_et_all[!choices_et_all$subjid %in% exclusions, ]
+
+# work with choices_et_all (which has eyetracjjubg data and one row per participant per trial)
+choices_et_all$rewA_EVgam=ifelse((choices_et_all$evA > choices_et_all$evB),choices_et_all$rewA,choices_et_all$rewB)
+choices_et_all$rewB_EVgam=ifelse((choices_et_all$evA > choices_et_all$evB),choices_et_all$rewB,choices_et_all$rewA)
+choices_et_all$probA_EVgam=(ifelse((choices_et_all$evA > choices_et_all$evB),choices_et_all$probA,choices_et_all$probB))/100
+choices_et_all$probB_EVgam=(ifelse((choices_et_all$evA > choices_et_all$evB),choices_et_all$probB,choices_et_all$probA))/100
+
+choices_et_all$gazeApay_EVgam=ifelse((choices_et_all$evA > choices_et_all$evB),choices_et_all$gaze_dur_payA,choices_et_all$gaze_dur_payB)
+choices_et_all$gazeBpay_EVgam=ifelse((choices_et_all$evA > choices_et_all$evB),choices_et_all$gaze_dur_payB,choices_et_all$gaze_dur_payA)
+choices_et_all$gazeAprob_EVgam=ifelse((choices_et_all$evA > choices_et_all$evB),choices_et_all$gaze_dur_probA,choices_et_all$gaze_dur_probB)
+choices_et_all$gazeBprob_EVgam=ifelse((choices_et_all$evA > choices_et_all$evB),choices_et_all$gaze_dur_probB,choices_et_all$gaze_dur_probA)
+
+#how much gaze to higher EV gamble?
+choices_et_all$gazeA_EVgam=choices_et_all$gazeApay_EVgam+choices_et_all$gazeAprob_EVgam
+choices_et_all$gazeB_EVgam=choices_et_all$gazeBpay_EVgam+choices_et_all$gazeBprob_EVgam
+
+#how much relative gaze to higher EV gamble?
+choices_et_all$relgaze_EVgam=choices_et_all$gazeA_EVgam/(choices_et_all$gazeA_EVgam+choices_et_all$gazeB_EVgam)
+
+#total gaze (to later compute relative gaze dur)
+choices_et_all$gaze_total=choices_et_all$gazeApay_EVgam+choices_et_all$gazeBpay_EVgam+choices_et_all$gazeAprob_EVgam+choices_et_all$gazeBprob_EVgam
+
+choices_et_all = choices_et_all %>% filter(learning=="Implicit")
+choices_common = choices_et_all %>% filter(common=="1")
+
+choices_common$Condition=factor(choices_common$Condition,levels=c("Uncorrelated","Negative","Positive"))
+
+##########################################################################################
+##########     BEHAVIORAL ANALYSES: CHOICE
+##########################################################################################
+
+### BY TIMEPRESSURE CONDITION
+# models above show that risk-reward condition effects only emerged in "Best"
+choices_common_summ=choices_common %>% group_by(Condition,Timepressure) %>% summarize(meanEVchoice=mean(higherEVchosen))
+choices_common_summ
+
+model_EV_stan_best=stan_glmer(higherEVchosen~(1|subjid)+evDiffabs+Condition, data=choices_common[choices_common$Timepressure=="No Timepressure",], family=binomial, na.action=na.omit, chains=12, cores=12, iter=2500, warmup=500, seed=555)
+#model_EV_stan_best=readRDS("modeloutputs/2_choice_model_implicitbest_common.rds")
+summary(model_EV_stan_best, digits=2)
+saveRDS(model_EV_stan_best,"modeloutputs/2_choice_model_implicitbest_common.rds")
+
+model_EV_stan_fast=stan_glmer(higherEVchosen~(1|subjid)+evDiffabs+Condition, data=choices_common[choices_common$Timepressure=="Timepressure",], family=binomial, na.action=na.omit, chains=12, cores=12, iter=2500, warmup=500, seed=555)
+#model_EV_stan_fast=readRDS("modeloutputs/2_choice_model_implicitbest_common.rds")
+summary(model_EV_stan_fast, digits=2)
+saveRDS(model_EV_stan_fast, )
+
+
+##########################################################################################
+##########     BEHAVIORAL ANALYSES: RTs / TIMEPRESS.
+##########################################################################################
+
+choices_et_all$timed_out=0
+choices_et_all$timed_out[choices_et_all$Timepressure=="Timepressure" & choices_et_all$RT_choice>1.5]=1
+
+choices_common$timed_out=0
+choices_common$timed_out[choices_common$Timepressure=="Timepressure" & choices_common$RT_choice>1.5]=1
+rt_summary = choices_common %>% group_by(Condition,Timepressure) %>% summarize(timedout=mean(timed_out),rt=mean(RT_choice))
+nrow(choices_common[choices_common$Timepressure=="Timepressure",])
+
+### common only
+model_RT_stan_bestimp=stan_glmer(RT_choice~(1|subjid)+evDiffabs+Condition, data=choices_common[choices_common$Timepressure=="No Timepressure",], na.action=na.omit, chains=12, cores=12, iter=10000, warmup=500, seed=555)
+summary(model_RT_stan_bestimp, digits=2)
+saveRDS(model_RT_stan_bestimp,"modeloutputs/2_rt_model_implicitbest_common.rds")
+
+model_RT_stan_fastimp=stan_glmer(RT_choice~(1|subjid)+evDiffabs+Condition, data=choices_common[choices_common$Timepressure=="Timepressure",], na.action=na.omit, chains=12, cores=12, iter=10000, warmup=500, seed=555)
+summary(model_RT_stan_fastimp, digits=2)
+saveRDS(model_RT_stan_fastimp,"modeloutputs/2_rt_model_implicitfast_common.rds")
+saveRDS(model_RT_stan_fastimp,"savedmodels")
+
+
+##########################################################################################
+##########     EYETRACKING ANALYSES
+##########################################################################################
+
+AOI_freq=choices_common %>%
+  group_by(Condition,Timepressure)%>%
+  summarize(mean=mean(locations,na.rm=T)) 
+AOI_freq
+
+# AOIs
+model_AOIs_bestimp=stan_glmer(locations~(1|subjid)+evDiffabs+Condition, data=choices_common[choices_common$Timepressure=="No Timepressure",], na.action=na.omit, chains=12, cores=12, iter=10000, warmup=500, seed=555)
+summary(model_AOIs_bestimp, digits=3)
+#saveRDS(model_AOIs_bestimp,"modeloutputs/2_AOI_model_implicitbest_common.rds")
+
+#model_AOIs_fastimp=stan_glmer(locations~(1|subjid)+evDiffabs+Condition, data=choices_common[choices_common$Timepressure=="Timepressure",], na.action=na.omit, chains=12, cores=12, iter=10000, warmup=500, seed=555)
+#model_AOIs_fastimp=readRDS("modeloutputs/2_AOI_model_implicitfast_common.rds")
+summary(model_AOIs_fastimp, digits=3)
+#saveRDS(model_AOIs_fastimp,"modeloutputs/2_AOI_model_implicitfast_common.rds")
+
+# gaze to payoff
+choices_common$relgaze_pays=(choices_common$gaze_dur_payA+choices_common$gaze_dur_payB)/choices_common$gaze_total
+
+model_gaze_bestimp=stan_glmer(relgaze_pays~(1|subjid)+evDiffabs+Condition, data=choices_common[choices_common$Timepressure=="No Timepressure",], na.action=na.omit, chains=12, cores=12, iter=10000, warmup=500, seed=555)
+summary(model_gaze_bestimp, digits=3)
+saveRDS(model_gaze_bestimp,"modeloutputs/2_gaze_model_implicitbest_common.rds")
+
+model_gaze_fastimp=stan_glmer(relgaze_pays~(1|subjid)+evDiffabs+Condition, data=choices_common[choices_common$Timepressure=="Timepressure",], na.action=na.omit, chains=12, cores=12, iter=10000, warmup=500, seed=555)
+summary(model_gaze_fastimp, digits=3)
+saveRDS(model_gaze_fastimp,"modeloutputs/2_gaze_model_implicitfast_common.rds")
+
+
+# within-gamble-transitions
+model_transitions_within_bestimp=stan_glmer(transitions_within~(1|subjid)+evDiffabs+Condition, data=choices_common[choices_common$Timepressure=="No Timepressure",], na.action=na.omit, chains=12, cores=12, iter=10000, warmup=500, seed=555)
+summary(model_transitions_within_bestimp, digits=3)
+saveRDS(model_transitions_within_bestimp,"modeloutputs/2_transitions_within_model_implicitbest_common.rds")
+
+model_transitions_within_fastimp=stan_glmer(transitions_within~(1|subjid)+evDiffabs+Condition, data=choices_common[choices_common$Timepressure=="Timepressure",], na.action=na.omit, chains=12, cores=12, iter=10000, warmup=500, seed=555)
+summary(model_transitions_within_fastimp, digits=3)
+saveRDS(model_transitions_within_fastimp,"modeloutputs/2_transitions_within_model_implicitfast_common.rds")
+print(model_transitions_within_fastimp)
+
+model_transitions_within_fastimp
+
+prin##########################################################################################
+##########     PROCESSING AND CHOICE
+##########################################################################################
+
+model_choiceProcessing_bestimp=stan_glmer(higherEVchosen~(1|subjid)+evDiffabs+locations+RT_choice+locations+transitions_within+relgaze_pays+Condition, data=choices_common[choices_common$Timepressure=="No Timepressure",], family=binomial, na.action=na.omit, chains=12, cores=12, iter=10000, warmup=500, seed=555)
+summary(model_choiceProcessing_bestimp, digits=3)
+saveRDS(model_choiceProcessing_bestimp,"modeloutputs/2_model_choiceProcessing_bestimp.rds")
+
+model_choiceProcessing_fastimp=stan_glmer(higherEVchosen~(1|subjid)+evDiffabs+locations+RT_choice+locations+transitions_within+relgaze_pays+Condition, data=choices_common[choices_common$Timepressure=="Timepressure",], family=binomial, na.action=na.omit, chains=12, cores=12, iter=10000, warmup=500, seed=555)
+summary(model_choiceProcessing_fastimp, digits=3)
+saveRDS(model_choiceProcessing_fastimp,"modeloutputs/2_model_choiceProcessing_fastimp.rds")
+
